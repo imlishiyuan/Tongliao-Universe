@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'default';
+    src: url('./SmileySans-Oblique.ttf.woff2');
+}
+
+

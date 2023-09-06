@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'default';
+  src: url('./SmileySans-Oblique.ttf.woff2');
+}
+body{
+  margin: 0px;
+  padding: 0px;
+}

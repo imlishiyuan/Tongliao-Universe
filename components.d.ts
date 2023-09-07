@@ -11,6 +11,8 @@ declare module 'vue' {
     ABackTop: typeof import('ant-design-vue/es')['BackTop']
     ACard: typeof import('ant-design-vue/es')['Card']
     ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
+    AFloatButton: typeof import('ant-design-vue/es')['FloatButton']
+    AFloatButtonGroup: typeof import('ant-design-vue/es')['FloatButtonGroup']
     Card: typeof import('./src/components/Card.vue')['default']
     FloatButton: typeof import('./src/components/FloatButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

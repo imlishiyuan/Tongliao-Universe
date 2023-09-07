@@ -23,7 +23,6 @@ import { inject, onMounted } from 'vue';
 import type { Axios } from 'axios';
 import usaJson from '@/assets/USA.json'
 
-
 echarts.use([
     TitleComponent,
     ToolboxComponent,
@@ -43,14 +42,18 @@ type EChartsOption = echarts.ComposeOption<
     | MapSeriesOption
 >;
 
+let mapChart:any
+
+let option: EChartsOption
+
+
 onMounted(() => {
 
     const chartDom = document.getElementById('map')!
 
     resize()
 
-    const mapChart = echarts.init(chartDom);
-    let option: EChartsOption;
+    mapChart = echarts.init(chartDom);
 
     mapChart.showLoading();
 
@@ -182,18 +185,31 @@ onMounted(() => {
     };
 
     mapChart.setOption(option);
-    window.onresize = ()=>{
+    
+    window.onresize = () => {
         resize()
         mapChart.resize()
-    }
-    mapChart.getDataURL()
+    };
 
     function resize(){
         chartDom.style.width = window.innerWidth+'px'
         chartDom.style.height = window.innerHeight+'px'
     }
-    
+
 })
+
+
+
+function mapResize(){
+    console.log('mapResize')
+    mapChart.setOption(option,true)
+}
+
+defineExpose({
+    mapResize,
+})
+
+
 
 
 </script>

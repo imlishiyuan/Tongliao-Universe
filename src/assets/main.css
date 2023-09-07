@@ -3,6 +3,7 @@
   src: url('./SmileySans-Oblique.ttf.woff2');
 }
 body{
+  font-family: default;
   margin: 0px;
   padding: 0px;
 }

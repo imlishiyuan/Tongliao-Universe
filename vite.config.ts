@@ -10,7 +10,9 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({
-      resolvers: [AntDesignVueResolver()],
+      resolvers: [AntDesignVueResolver({
+        importStyle: false, // css in js
+      })],
     }),
   ],
   resolve: {

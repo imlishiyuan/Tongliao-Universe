@@ -5,7 +5,7 @@ import {
   QuestionCircleOutlined,
   SyncOutlined,
   ShareAltOutlined,
-  HeartOutlined
+  EyeOutlined
 } from '@ant-design/icons-vue';
 import { ref } from 'vue';
 
@@ -54,7 +54,7 @@ function follow() {
       <!-- 关注  -->
       <a-float-button @click="follow" tooltip="关注">
         <template #icon>
-          <HeartOutlined />
+          <EyeOutlined />
         </template>
       </a-float-button>
     </a-float-button-group>

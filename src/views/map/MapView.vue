@@ -12,8 +12,11 @@ import type {
     TitleComponentOption,
     VisualMapComponentOption,
     LegendComponentOption,
-    GeoComponentOption
+    GeoComponentOption,
+
 } from 'echarts/components'
+
+import type {} from 'echarts/types/dist/shared'
 import { MapChart } from 'echarts/charts';
 import type { MapSeriesOption } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -56,8 +59,8 @@ onMounted(() => {
     const axios = inject<Axios>("axios")
 
     mapChart.hideLoading();
-
-    echarts.registerMap('tongliao-world', usaJson, {
+    
+    echarts.registerMap('tongliao-world', usaJson as any, {
         // 此处需要将回龙观、天通苑与通辽标出
     });
     option = {
@@ -85,6 +88,7 @@ onMounted(() => {
             left: 64,
             top: 64,
             selectedMode:false,
+            dimension:0,
             inRange:{
                 color:['#ec2d7a','#eeb8c3']
             },
@@ -118,7 +122,12 @@ onMounted(() => {
                         shadowBlur: 10
                     }
                 },
-                data: []
+                data: [
+                    {
+                        name:"乍得",
+                        groupId:'奇葩小国'
+                    }
+                ]
             }
         ]
     };

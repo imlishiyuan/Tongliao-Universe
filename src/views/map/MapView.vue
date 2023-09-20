@@ -161,9 +161,12 @@ onMounted(() => {
                 itemStyle: {
                     color: "#f26b1f"
                 },
-                symbolSize: 8,
+                symbolSize: 4,
                 label: {
                     formatter: '{b}',
+                    color:'#fff',
+                    textBorderColor: '#000',
+                    textBorderWidth: 2,
                     position: 'right',
                     show: true
                 },
@@ -231,6 +234,8 @@ onMounted(() => {
                         textContent: {
                             type:'text',
                             style: {
+                                textStroke: '#000',
+                                lineWidth:2,
                                 text: api.value(0)
                             }
                         },

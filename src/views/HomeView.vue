@@ -23,7 +23,7 @@ const followInfo = [
 const router = useRouter()
 
 function toAbout() {
-  router.push({name:"aboult"})
+  router.push({name:"about"})
   
 }
 function resize(){
@@ -33,11 +33,16 @@ function resize(){
 function share() {
   let href= window.location.href
   console.log(href)
-
+  // 打开弹窗展示二维码
 }
 
 function follow() {
+  // 打开李干嘛与小约翰的弹窗
+}
 
+function clickArea(params:any){
+  // 如果data有数据则打开弹窗
+  console.log(params)
 }
 
 </script>
@@ -47,7 +52,7 @@ function follow() {
     <div>
 
     </div>
-    <MapView ref="map"></MapView>
+    <MapView ref="map" @click-area="clickArea"></MapView>
     <!-- <Card></Card> -->
     <a-float-button-group shape="square" :style="{ right: '64px' }">
       <!-- 关于  -->

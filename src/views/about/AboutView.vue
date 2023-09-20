@@ -5,6 +5,11 @@
 </script>
 
 <template>
-    
- 
+    <main class="article">
+        
+    </main>
 </template>
+
+<style>
+    
+</style>

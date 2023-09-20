@@ -4,7 +4,6 @@ import * as echarts from 'echarts/core';
 
 import {
     TitleComponent,
-    LegendComponent,
     VisualMapComponent,
     GeoComponent,
 } from 'echarts/components';
@@ -12,13 +11,12 @@ import {
 import type {
     TitleComponentOption,
     VisualMapComponentOption,
-    LegendComponentOption,
     GeoComponentOption,
 
 } from 'echarts/components'
 
-import { MapChart, EffectScatterChart,CustomChart } from 'echarts/charts';
-import type { MapSeriesOption, EffectScatterSeriesOption,CustomSeriesOption } from 'echarts/charts';
+import { MapChart, EffectScatterChart, CustomChart } from 'echarts/charts';
+import type { MapSeriesOption, EffectScatterSeriesOption, CustomSeriesOption } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { inject, onMounted } from 'vue';
 import type { Axios } from 'axios';
@@ -29,7 +27,6 @@ const clickArea = defineEmits(['clickArea'])
 echarts.use([
     TitleComponent,
     VisualMapComponent,
-    LegendComponent,
     GeoComponent,
     MapChart,
     EffectScatterChart,
@@ -39,7 +36,6 @@ echarts.use([
 
 type EChartsOption = echarts.ComposeOption<
     | TitleComponentOption
-    | LegendComponentOption
     | VisualMapComponentOption
     | GeoComponentOption
     | MapSeriesOption
@@ -84,23 +80,24 @@ onMounted(() => {
             top: 64,
             right: 64
         },
-        // 藏花红、姜红
+        // 藏花红、金黄、姜红
         visualMap: {
             type: 'piecewise',
             show: true,
             hoverLink: false,
             itemWidth: 40,
-            seriesIndex:0,
+            seriesIndex: 0,
             pieces: [
                 { gte: 1, lte: 1, label: "奇葩小国", color: "#ec2d7a" },
+                { gte: -1, lte: -1, label: "计量单位", color: "#f26b1f" },
                 { gte: 0, lte: 0, label: "新大陆", color: "#eeb8c3" },
             ],
             orient: 'vertical',
             left: 64,
             top: 64,
             selectedMode: false,
-            textStyle:{
-                color:"#FFF"
+            textStyle: {
+                color: "#FFF"
             }
         },
         geo: [
@@ -149,19 +146,20 @@ onMounted(() => {
                 name: '人口单位',
                 type: 'effectScatter',
                 geoIndex: 0,
+                selectedMode: false,
                 coordinateSystem: 'geo',
                 data: [
-                    { 
-                        name: "天通苑", 
+                    {
+                        name: "天通苑",
                         value: [116.420862, 40.061552],
                     },
-                    { 
-                        name: "回龙观", 
-                        value: [116.324618, 40.064687] 
+                    {
+                        name: "回龙观",
+                        value: [116.324618, 40.064687]
                     }
                 ],
-                itemStyle:{
-                    color:"#f26b1f"
+                itemStyle: {
+                    color: "#f26b1f"
                 },
                 symbolSize: 8,
                 label: {
@@ -171,11 +169,13 @@ onMounted(() => {
                 },
             },
             {
-                name:"面积单位",
+                name: "面积单位",
                 type: 'custom',
-                geoIndex:0,
+                geoIndex: 0,
                 coordinateSystem: 'geo',
-                renderItem: (params:any, api:any) => {
+                selectedMode: false,
+                data: [['通辽']],
+                renderItem: (params: any, api: any)=> {
                     let coords = [
                         [123.087539, 44.522239],
                         [123.399602, 44.139572],
@@ -208,33 +208,38 @@ onMounted(() => {
                         [122.463412, 44.235473],
                         [123.087539, 44.522239]
                     ]
-                    var points = []
-                    for (var i = 0; i < coords.length; i++) {
+                    let points = []
+                    for (let i = 0; i < coords.length; i++) {
                         points.push(api.coord(coords[i]))
                     }
-
+                    
                     return {
                         type: 'polygon',
                         shape: {
-                            points: echarts.graphic.clipPointsByRect(points, {
-                                x: params.coordSys.x,
-                                y: params.coordSys.y,
-                                width: params.coordSys.width,
-                                height: params.coordSys.height
-                            })
+                            points: points
                         },
-                        style: api.style({
-                            fill: "#f26b1f",
-                        })
+                        style: {
+                            fill: '#f26b1f'
+                        },
+                        emphasis: {
+                            style: {
+                                shadowColor: 'rgba(0, 0, 0, 0.7)',
+                                shadowBlur: 10
+                            }
+                        },
+                        focus:'self',
+                        textContent: {
+                            type:'text',
+                            style: {
+                                text: api.value(0)
+                            }
+                        },
+                        textConfig: {
+                            insideFill:'#FFF',
+                            position: 'inside',
+                        },
                     }
-                },
-                itemStyle: {
-                    opacity: 0.5
-                },
-                animation: false,
-                silent: true,
-                data: [0],
-                z: 10
+                }
             }
         ]
     };

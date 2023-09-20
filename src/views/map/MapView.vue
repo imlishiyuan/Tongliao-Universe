@@ -13,10 +13,9 @@ import type {
     VisualMapComponentOption,
     LegendComponentOption,
     GeoComponentOption,
-
+    
 } from 'echarts/components'
 
-import type {} from 'echarts/types/dist/shared'
 import { MapChart } from 'echarts/charts';
 import type { MapSeriesOption } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -83,18 +82,16 @@ onMounted(() => {
         visualMap:{
             type: 'piecewise',
             show:true,
-            categories:['奇葩小国','未探索区域'],
+            hoverLink:false,
+            itemWidth:40,
+            pieces:[
+                {gte:1,lte:1,label:"奇葩小国",color:"#ec2d7a"},
+                {gte:0,lte:0,label:"新大陆",color:"#eeb8c3"},
+            ],
             orient: 'vertical',
             left: 64,
             top: 64,
             selectedMode:false,
-            dimension:0,
-            inRange:{
-                color:['#ec2d7a','#eeb8c3']
-            },
-            outOfRange: {
-                color:"#eeb8c3"
-            }
         },
         series: [
             {
@@ -108,7 +105,7 @@ onMounted(() => {
                     color:"#FFF",
                 },
                 itemStyle:{
-                    areaColor:'#ec2d7a',
+                    areaColor:"#eeb8c3",
                     borderWidth:0
                 },
                 emphasis: {
@@ -122,10 +119,10 @@ onMounted(() => {
                         shadowBlur: 10
                     }
                 },
-                data: [
+                data:[
                     {
-                        name:"乍得",
-                        groupId:'奇葩小国'
+                        name:'乍得',
+                        value:1
                     }
                 ]
             }
@@ -133,6 +130,10 @@ onMounted(() => {
     };
 
     mapChart.setOption(option);
+
+    mapChart.on("click",params=>{
+        console.log(params)
+    })
     
     window.onresize = () => {
         resize()

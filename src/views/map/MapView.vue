@@ -81,25 +81,31 @@ onMounted(() => {
             right: 64
         },
         // 藏花红、金黄、姜红
-        visualMap: {
-            type: 'piecewise',
-            show: true,
-            hoverLink: false,
-            itemWidth: 40,
-            seriesIndex: 0,
-            pieces: [
-                { gte: 1, lte: 1, label: "奇葩小国", color: "#ec2d7a" },
-                { gte: -1, lte: -1, label: "计量单位", color: "#f26b1f" },
-                { gte: 0, lte: 0, label: "新大陆", color: "#eeb8c3" },
-            ],
-            orient: 'vertical',
-            left: 64,
-            top: 64,
-            selectedMode: false,
-            textStyle: {
-                color: "#FFF"
-            }
-        },
+        visualMap: [
+            {
+                type: 'piecewise',
+                show: true,
+                hoverLink: false,
+                itemWidth: 32,
+                id: 'color',
+                seriesIndex: 0,
+                pieces: [
+                    { gte: 1, lte: 1, label: "奇葩小国", color: "#ec2d7a" },
+                    // { gte: 2, lte: 2, label: "硬核狠人", color: "#4d1018" },
+                    // { gte: 3, lte: 3, label: "神奇组织", color: "#45b787" },
+                    { gte: 4, lte: 4, label: "新大陆", color: "#eeb8c3" },
+                    { gte: 5, lte: 5, label: "计量单位", color: "#f26b1f" },
+                ],
+                inverse: true,
+                orient: 'vertical',
+                left: 64,
+                top: 64,
+                selectedMode: false,
+                textStyle: {
+                    color: "#FFF"
+                }
+            },
+        ],
         geo: [
             {
                 name: '奇葩小国',
@@ -139,6 +145,18 @@ onMounted(() => {
                     {
                         name: '乍得',
                         value: 1
+                    },
+                    {
+                        name: '科特迪瓦',
+                        value: 1
+                    },
+                    {
+                        name: '多米尼加',
+                        value: 1
+                    },
+                    {
+                        name: '布基纳法索',
+                        value: 1
                     }
                 ]
             },
@@ -152,15 +170,19 @@ onMounted(() => {
                     {
                         name: "天通苑",
                         value: [116.420862, 40.061552],
+                        itemStyle: {
+                            color: "#f26b1f"
+                        },
                     },
                     {
                         name: "回龙观",
-                        value: [116.324618, 40.064687]
+                        value: [116.324618, 40.064687],
+                        itemStyle: {
+                            color: "#f26b1f"
+                        },
                     }
                 ],
-                itemStyle: {
-                    color: "#f26b1f"
-                },
+                
                 symbolSize: 4,
                 label: {
                     formatter: '{b}',

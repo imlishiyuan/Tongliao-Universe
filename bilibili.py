@@ -30,7 +30,7 @@ def upinfo(mid):
     json = requests.get(url,params=params,headers=headers).json()
     return json
 
-# 统计信息
+# 稿件统计
 # https://api.bilibili.com/x/space/navnum?mid=23947287
 def navnum(mid):
     url = 'https://api.bilibili.com/x/space/navnum'
@@ -42,6 +42,15 @@ def navnum(mid):
     }
     json = requests.get(url,params=params,headers=headers).json()
     return json
+
+
+# 合集信息 https://api.bilibili.com/x/polymer/web-space/seasons_archives_list?mid=23947287&season_id=665&sort_reverse=false&page_num=1&page_size=30
+
+
+# up主统计数据  https://api.bilibili.com/x/relation/stat?vmid=23947287&w_rid=e6a6e31cc15fa5b806f9f1ad6ce548bb&wts=1695312456&web_location=333.999
+
+
+
 
 def saveInfo(jsonStr,fileName):
     # base path = src/assets/fileName

@@ -4,13 +4,19 @@ import {
   QuestionCircleOutlined,
   SyncOutlined,
   ShareAltOutlined,
-  EyeOutlined
+  EyeOutlined,
+  CopyOutlined
 } from '@ant-design/icons-vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import john from '@/assets/john.json'
 import liganma from '@/assets/liganma.json'
+import ClipboardJS from 'clipboard'
+import { message } from 'ant-design-vue';
+
+
+const [messageApi, contextHolder] = message.useMessage();
 
 const map = ref()
 
@@ -19,6 +25,8 @@ const qrcodeVisible = ref<boolean>(false);
 const shareVisible = ref<boolean>(false);
 
 const aeraInfoVisible = ref<boolean>(false);
+
+const href = window.location.href
 
 const followInfo = {
   john:john,
@@ -36,10 +44,10 @@ function resize(){
 }
 
 function share() {
-  let href= window.location.href
   console.log(href)
   // 打开弹窗展示二维码
   shareVisible.value = true
+  new ClipboardJS("#copyShareLink")
   
 }
 
@@ -115,6 +123,40 @@ function clickArea(params:any){
         
         <template #footer>
         </template>
+      </a-modal>
+
+      <a-modal
+        v-model:open="shareVisible"
+        title="分享给朋友"
+        centered
+        @ok="qrcodeVisible = false"
+      >
+      <a-row :gutter="[16, 24]" justify="space-around" align="middle">
+        <a-col :span="24" justify="space-around" align="middle" >
+          
+          <a-space direction="vertical" style="width: 100%;">
+            <a-input-group compact>
+            <a-button>
+              链接
+            </a-button>
+            <a-input :value="href" style="width: calc(100% - 200px)" id="shareLink"/>
+            <a-tooltip title="复制链接">
+              <a-button id="copyShareLink" data-clipboard-action="copy" data-clipboard-target="#shareLink">
+                <template #icon><CopyOutlined /></template>
+              </a-button>
+            </a-tooltip>
+          </a-input-group>
+          <a-qrcode
+                error-level="H"
+                :value="href"
+                icon="favicon.ico"
+              />
+          </a-space>
+          
+        </a-col>
+      </a-row>
+        
+        <template #footer></template>
       </a-modal>
     </div>
   </div>

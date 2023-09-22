@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AFloatButton: typeof import('ant-design-vue/es')['FloatButton']
     AFloatButtonGroup: typeof import('ant-design-vue/es')['FloatButtonGroup']
+    AModal: typeof import('ant-design-vue/es')['Modal']
     Card: typeof import('./src/components/Card.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

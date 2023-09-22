@@ -10,14 +10,17 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const map = ref()
+
+const modal2Visible = ref<boolean>(false);
+
 const followInfo = [
   {
     name:"小约翰可汗",
-    href:"https://space.bilibili.com/liganma"
+    href:"https://space.bilibili.com/23947287"
   },
   {
     name:"李干嘛",
-    href:"https://space.bilibili.com/liganma"
+    href:"https://space.bilibili.com/1156068103"
   },
 ]
 const router = useRouter()
@@ -34,24 +37,24 @@ function share() {
   let href= window.location.href
   console.log(href)
   // 打开弹窗展示二维码
+  modal2Visible.value = true
 }
 
 function follow() {
   // 打开李干嘛与小约翰的弹窗
+  modal2Visible.value = true
 }
 
 function clickArea(params:any){
   // 如果data有数据则打开弹窗
   console.log(params)
+  modal2Visible.value = true
 }
 
 </script>
 
 <template>
   <div class="content">
-    <div>
-
-    </div>
     <MapView ref="map" @click-area="clickArea"></MapView>
     <!-- <Card></Card> -->
     <a-float-button-group shape="square" :style="{ right: '64px' }">
@@ -80,6 +83,19 @@ function clickArea(params:any){
         </template>
       </a-float-button>
     </a-float-button-group>
+
+    <div class="models">
+      <a-modal
+        v-model:open="modal2Visible"
+        title="Vertically centered modal dialog"
+        centered
+        @ok="modal2Visible = false"
+      >
+        <p>some contents...</p>
+        <p>some contents...</p>
+        <p>some contents...</p>
+      </a-modal>
+    </div>
   </div>
 </template>
 

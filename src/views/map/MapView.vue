@@ -21,6 +21,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 import { inject, onMounted } from 'vue';
 import type { Axios } from 'axios';
 import usaJson from '@/assets/world.geo.json'
+import country from '@/assets/country.json'
 
 const clickArea = defineEmits(['clickArea'])
 

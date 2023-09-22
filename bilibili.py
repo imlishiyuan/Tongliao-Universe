@@ -171,6 +171,8 @@ def season(mid,seasonId,fileName):
         for item in archives :
             all_archives.append({
                 "countryName":'#',
+                "personName":'#',
+                "organizationName":'#',
                 "name": item['title'],
                 "bvid": item['bvid'],
                 "aid": item['aid'],

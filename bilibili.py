@@ -83,6 +83,23 @@ def saveInfo(jsonObj,fileName):
     return
 
 
+def saveFile(url:str):
+    headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.69'
+    }
+    urls= url.split("/")
+    path = urls[len(urls)-1]
+    response = requests.get(url,headers=headers)
+    basePath = "public/image/{path}"
+    
+    bytes = response.content
+
+    with open(basePath.format(path=path),"wb") as f:
+        f.write(bytes)
+
+    return path
+
+
 # print(new_vedio_list(23947287,1,10)['data'])
 # print(upinfo(23947287))
 # print(navnum(23947287)['data'])
@@ -92,8 +109,8 @@ def saveInfo(jsonObj,fileName):
 
 def john_info():
     mid = 23947287
-    up_stat_info= up_stat(23947287)
-    upinfo_json= upinfo(23947287)
+    up_stat_info= up_stat(mid)
+    upinfo_json= upinfo(mid)
 
     john ={
         "mid": mid,
@@ -108,7 +125,36 @@ def john_info():
         "live_room": upinfo_json["live_room"]["url"],
     }
 
+    path= saveFile(john['avatar'])
+
+    john['avatar'] = path
+
     saveInfo(john,"john.json")
+    return
+
+def liganma_info():
+    mid = 1156068103
+    up_stat_info= up_stat(mid)
+    upinfo_json= upinfo(mid)
+
+    john ={
+        "mid": mid,
+        "name": upinfo_json['name'],
+        "sign": upinfo_json['sign'],
+        "avatar": upinfo_json['face'], 
+        "birthday": upinfo_json['birthday'], 
+        "sex": upinfo_json['sex'],
+        "title": upinfo_json['official']['title'],
+        "follower": up_stat_info['follower'],
+        "space":"https://space.bilibili.com/{0}".format(mid),
+        "live_room": '' if upinfo_json["live_room"] == None else upinfo_json["live_room"]["url"],
+    }
+
+    path= saveFile(john['avatar'])
+
+    john['avatar'] = path
+
+    saveInfo(john,"liganma.json")
     return
 
 def season(mid,seasonId,fileName):
@@ -139,8 +185,17 @@ def season(mid,seasonId,fileName):
             break
         pageNum+=1
 
+    # 下载封面
+    
+
+    for item in all_archives:
+        path= saveFile(item['cover'])
+        item['cover'] = path
+
     saveInfo(all_archives,fileName)
     return
+
+
 
 def country():
     mid = 23947287
@@ -160,6 +215,7 @@ def organization():
     season(mid,seasonId,"organization.json")
     return
 
+liganma_info()
 john_info()
 country()
 person()

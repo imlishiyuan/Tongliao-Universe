@@ -9,26 +9,28 @@ import {
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+import john from '@/assets/john.json'
+import liganma from '@/assets/liganma.json'
+
 const map = ref()
 
-const modal2Visible = ref<boolean>(false);
+const qrcodeVisible = ref<boolean>(false);
 
-const followInfo = [
-  {
-    name:"小约翰可汗",
-    href:"https://space.bilibili.com/23947287"
-  },
-  {
-    name:"李干嘛",
-    href:"https://space.bilibili.com/1156068103"
-  },
-]
+const shareVisible = ref<boolean>(false);
+
+const aeraInfoVisible = ref<boolean>(false);
+
+const followInfo = {
+  john:john,
+  liganma: liganma,
+}
 const router = useRouter()
 
 function toAbout() {
   router.push({name:"about"})
   
 }
+
 function resize(){
   map.value.mapResize()
 }
@@ -37,18 +39,20 @@ function share() {
   let href= window.location.href
   console.log(href)
   // 打开弹窗展示二维码
-  modal2Visible.value = true
+  shareVisible.value = true
+  
 }
 
 function follow() {
   // 打开李干嘛与小约翰的弹窗
-  modal2Visible.value = true
+  qrcodeVisible.value = true
+
 }
 
 function clickArea(params:any){
   // 如果data有数据则打开弹窗
   console.log(params)
-  modal2Visible.value = true
+  aeraInfoVisible.value = true
 }
 
 </script>
@@ -86,14 +90,31 @@ function clickArea(params:any){
 
     <div class="models">
       <a-modal
-        v-model:open="modal2Visible"
-        title="Vertically centered modal dialog"
+        v-model:open="qrcodeVisible"
+        title="感谢关注"
         centered
-        @ok="modal2Visible = false"
+        @ok="qrcodeVisible = false"
       >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
+      <a-row :gutter="[16, 24]" justify="space-around" align="middle">
+        <a-col :span="12" justify="space-around" align="middle">
+          
+          <a-qrcode
+                error-level="H"
+                :value="followInfo.john.space"
+                :icon="'image/' + followInfo.john.avatar"
+              />
+        </a-col>
+        <a-col :span="12" justify="space-around" align="middle">
+          <a-qrcode
+            error-level="H"
+            :value="followInfo.liganma.space"
+            :icon="'image/' + followInfo.liganma.avatar"
+          />
+        </a-col>
+      </a-row>
+        
+        <template #footer>
+        </template>
       </a-modal>
     </div>
   </div>

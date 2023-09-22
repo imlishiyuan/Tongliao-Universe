@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { theme } from 'ant-design-vue';
 
-console.log("管理后台页面异常请提工单处理")
-
+// :theme="{ algorithm: theme.darkAlgorithm, }"
 </script>
 
 <template>
-  <RouterView />
+   <a-config-provider
+      
+    >
+    <RouterView />
+  </a-config-provider>
 </template>

@@ -82,6 +82,12 @@ def saveInfo(jsonObj,fileName):
         f.write(json.dumps(jsonObj,ensure_ascii=False,indent=4))
     return
 
+def readFile(fileName:str):
+    basePath = "src/assets/{fileName}"
+    with open(basePath.format(fileName=fileName),"r", encoding='utf-8') as f:
+        content = f.read()
+        return json.loads(content)
+
 
 def saveFile(url:str):
     headers = {
@@ -163,16 +169,22 @@ def season(mid,seasonId,fileName):
     durationInfo = "{m}分{s}秒"
     
     all_archives=[]
+
+    dataInFile = readFile(fileName=fileName)
+
+    dataInFileMap = dataInFile.map(lambda item: item['bvid'], item)
     
     while True :
         seasons_archives= seasons_archives_list(mid,seasonId,pageNum)
         page = seasons_archives['page']
         archives = seasons_archives['archives']
         for item in archives :
+            
+            data = dataInFileMap.get(item['bvid'])
             all_archives.append({
-                "countryName":'#',
-                "personName":'#',
-                "organizationName":'#',
+                "countryName":data['countryName'] if data != None else '#',
+                "personName":data['personName'] if data != None else '#',
+                "organizationName":data['organizationName'] if data != None else '#',
                 "name": item['title'],
                 "bvid": item['bvid'],
                 "aid": item['aid'],

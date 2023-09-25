@@ -13,8 +13,6 @@ declare module 'vue' {
     ACardMeta: typeof import('ant-design-vue/es')['CardMeta']
     ACol: typeof import('ant-design-vue/es')['Col']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
-    ADescriptions: typeof import('ant-design-vue/es')['Descriptions']
-    ADescriptionsItem: typeof import('ant-design-vue/es')['DescriptionsItem']
     AFloatButton: typeof import('ant-design-vue/es')['FloatButton']
     AFloatButtonGroup: typeof import('ant-design-vue/es')['FloatButtonGroup']
     AInput: typeof import('ant-design-vue/es')['Input']
@@ -24,7 +22,6 @@ declare module 'vue' {
     ARow: typeof import('ant-design-vue/es')['Row']
     ASpace: typeof import('ant-design-vue/es')['Space']
     ATooltip: typeof import('ant-design-vue/es')['Tooltip']
-    Card: typeof import('./src/components/Card.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

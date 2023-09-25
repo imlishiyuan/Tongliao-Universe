@@ -22,6 +22,7 @@ import { inject, onMounted } from 'vue';
 import type { Axios } from 'axios';
 import usaJson from '@/assets/world.geo.json'
 import country from '@/assets/country.json'
+import { Item } from 'ant-design-vue/es/menu';
 
 const clickArea = defineEmits(['clickArea'])
 
@@ -47,6 +48,12 @@ type EChartsOption = echarts.ComposeOption<
 let mapChart: any
 
 let option: EChartsOption
+
+let countrySet = new Set<string>(country.flatMap(item => item.countryName))
+
+let countryList = Array.from(countrySet).map(item => {
+    return {name:item,value:1}
+})
 
 onMounted(() => {
 
@@ -142,24 +149,7 @@ onMounted(() => {
                 geoIndex: 0,
                 selectedMode: false,
                 map: 'tongliao-world',
-                data: [
-                    {
-                        name: '乍得',
-                        value: 1
-                    },
-                    {
-                        name: '科特迪瓦',
-                        value: 1
-                    },
-                    {
-                        name: '多米尼加',
-                        value: 1
-                    },
-                    {
-                        name: '布基纳法索',
-                        value: 1
-                    }
-                ]
+                data: countryList
             },
             {
                 name: '人口单位',

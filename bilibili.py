@@ -171,8 +171,6 @@ def season(mid,seasonId,fileName):
     all_archives=[]
 
     dataInFile = readFile(fileName=fileName)
-
-    dataInFileMap = map(lambda item: {item['bvid']:item},dataInFile)
     
     while True :
         seasons_archives= seasons_archives_list(mid,seasonId,pageNum)
@@ -180,11 +178,16 @@ def season(mid,seasonId,fileName):
         archives = seasons_archives['archives']
         for item in archives :
             
-            data = dataInFileMap[item['bvid']]
+            data = None
+
+            for f in dataInFile:
+                if f['bvid'] == item['bvid']:
+                    data = f
+
             all_archives.append({
-                "countryName":data['countryName'] if data != None else '#',
-                "personName":data['personName'] if data != None else '#',
-                "organizationName":data['organizationName'] if data != None else '#',
+                "countryName":data['countryName'] if data != None else ['#'],
+                "personName":data['personName'] if data != None else ['#'],
+                "organizationName":data['organizationName'] if data != None else ['#'],
                 "name": item['title'],
                 "bvid": item['bvid'],
                 "aid": item['aid'],

@@ -186,6 +186,7 @@ def season(mid,seasonId,fileName):
 
             all_archives.append({
                 "countryName":data['countryName'] if data != None else ['#'],
+                "leader":data['leader'] if data != None else ['#'],
                 "personName":data['personName'] if data != None else ['#'],
                 "organizationName":data['organizationName'] if data != None else ['#'],
                 "name": item['title'],

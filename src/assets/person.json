@@ -1,7 +1,7 @@
 [
     {
-        "countryName": "#",
-        "personName": "#",
+        "countryName": ["意大利"],
+        "personName": ["皮特里"],
         "organizationName": "#",
         "name": "奥运会上最成功的失败者是谁？【硬核狠人59】",
         "bvid": "BV1mk4y1w7ki",
@@ -13,9 +13,9 @@
         "url": "https://www.bilibili.com/video/BV1mk4y1w7ki"
     },
     {
-        "countryName": "#",
+        "countryName": ["南斯拉夫"],
         "personName": "#",
-        "organizationName": "#",
+        "organizationName": ["波波夫"],
         "name": "007的原型是谁？【硬核狠人58】",
         "bvid": "BV148411B7NK",
         "aid": 233209523,

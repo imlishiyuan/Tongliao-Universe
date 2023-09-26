@@ -22,7 +22,6 @@ import { inject, onMounted } from 'vue';
 import type { Axios } from 'axios';
 import usaJson from '@/assets/world.geo.json'
 import country from '@/assets/country.json'
-import { Item } from 'ant-design-vue/es/menu';
 
 const clickArea = defineEmits(['clickArea'])
 
@@ -163,7 +162,7 @@ onMounted(() => {
                         value: [116.420862, 40.061552],
                         itemStyle: {
                             color: "#f26b1f"
-                        },
+                        }
                     },
                     {
                         name: "回龙观",

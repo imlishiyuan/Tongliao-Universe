@@ -34,6 +34,8 @@ const aeraInfoVisible = ref<boolean>(false);
 
 const unitInfoVisible = ref<boolean>(false)
 
+const activeTitle = ref<string>();
+
 const personInfo = ref<Array<{
   
 }>>([]);
@@ -125,6 +127,7 @@ function clickArea(params: any) {
     unitInfoVisible.value = true
   }else{
     // 从json筛选数据
+    activeTitle.value = name
     personInfo.value = []
     countryInfo.value = []
     organizationInfo.value = []
@@ -215,7 +218,7 @@ function clickArea(params: any) {
         <template #footer></template>
       </a-modal>
 
-      <a-modal v-model:open="aeraInfoVisible" title="区域信息" centered @ok="aeraInfoVisible = false" width="1080px" >
+      <a-modal v-model:open="aeraInfoVisible" :title="activeTitle" centered @ok="aeraInfoVisible = false" width="1080px" >
         <a-row justify="space-around" >
           <a-col :span="7" justify="space-around" align="middle" class="space-box">
             

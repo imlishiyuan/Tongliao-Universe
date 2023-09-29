@@ -1,25 +1,31 @@
 
-## 通辽宇宙地图
+## the map of tongliao-universe 通辽宇宙地图
 
 作为小约翰可汗的歌迷，为可汗献图大家可以理解吧。
 
-### 通辽宇宙基本信息
+### preview 预览
 
-**通辽宇宙首府：** 内蒙古通辽市
+![通辽宇宙地图预览](/tongliao-universe.png)
+
+### basic info 通辽宇宙基本信息
+
+**capital 通辽宇宙首府：** 内蒙古通辽市
 
 ![通辽宇宙地图](/favicon.ico)
 
-**最高领导人称号：** {{john.title}}
+**the supreme leader 最高领导人：** 小约翰可汗 
 
 ![耗子头像](/john.jpg)
 
 
+Our great and supreme Great Khan of Tongliao is in a superposition of the Dusk Sovereign and the Ming Emperor, and his rule is not perfect, but his rule is great, his rule is brilliant, and his rule is irreplaceable. When Little John was updated, John was in the state of a king, receiving "Khan Diligence", "The Supreme King, Little John Come Back To His Loyal Bilibili" and many other positive buffs for one to two weeks. When Little John does not update, when John is in a comatose state, at this time the folk style evaluation begins to decline, the Diao people will urge changes on various platforms, "dead rats quickly update" is the common term of the Diao people.
+
 我们伟大至高的通辽大可汗处于昏君与明君的叠加态，他的统治并不是完美的，但是他的统治是伟大的，他的统治是光辉的，他的统治是不可替代的。当小约翰更新时进行观测，此时约翰处于明君态，获得“可汗勤政”、“The Supreme King, Little John Come Back To His Loyal Bilibili”等等诸多正面Buff，持续一到两周。当小约翰不更新时进行观测，此时约翰处于昏君态，此时民间风评开始下降，刁民们将在各个平台上催更，“死耗子快更新”是刁民们的常用催更用语。
 
 
-**通辽宇宙基本面积单位：** 通辽，记作T，通辽，简写T，总面积59535平方千米。
+**basic area unit 通辽宇宙基本面积单位：** 通辽，记作T，通辽，简写T，总面积59535平方千米。
 
-**通辽宇宙基本人口单位：** 大单位：天通苑，约50万人；小单位：回龙观，约30万人。
+**Basic population units 通辽宇宙基本人口单位：** 大单位：天通苑，约50万人；小单位：回龙观，约30万人。
 
 
 ## Project Setup

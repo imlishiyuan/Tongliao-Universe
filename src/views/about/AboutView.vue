@@ -3,6 +3,7 @@
 import {ArrowLeftOutlined} from '@ant-design/icons-vue'
 import about from '@/assets/About.md'
 import { useRouter } from 'vue-router';
+import john from '@/assets/john.json'
 
 const router = useRouter()
 

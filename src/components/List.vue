@@ -42,7 +42,7 @@ const cardInfo = defineProps<{
                         </a-col>
                     </a-row>
                     
-                    <a-row v-if="item.personName!=undefined && !item.personName.includes('#')">
+                    <a-row v-if="item.personName instanceof Array && item.personName!=undefined && !item.personName.includes('#')">
                         <a-col>
                             <span>
                                 <a-typography-text type="secondary">
@@ -52,7 +52,7 @@ const cardInfo = defineProps<{
                             </span>
                         </a-col>
                     </a-row>
-                    <a-row v-if="item.organizationName!=undefined && !item.organizationName.includes('#')">
+                    <a-row v-if="item.organizationName instanceof Array && item.organizationName!=undefined && !item.organizationName.includes('#')">
                         <a-col>
                             <span>
                                 <a-typography-text type="secondary">

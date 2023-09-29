@@ -13,6 +13,7 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     Components({
+      extensions: ['vue', 'md'],
       resolvers: [AntDesignVueResolver({
         importStyle: false, // css in js
       })],
@@ -23,5 +24,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  build: {
+    sourcemap: true,
+  },
 })

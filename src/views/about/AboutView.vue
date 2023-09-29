@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // 关于
 import {ArrowLeftOutlined} from '@ant-design/icons-vue'
-import about from '@/assets/About.md'
+import About from '@/components/About.md'
 import { useRouter } from 'vue-router';
 import john from '@/assets/john.json'
 
@@ -15,7 +15,7 @@ const router = useRouter()
         <a-button type="primary" ghost @click="() => router.go(-1)"><ArrowLeftOutlined /> 回到地图</a-button> 
     </header>
     <main class="article">
-        <about></about>
+        <About></About>
     </main>
     <footer class="footer">&COPY; Copyright <a-typography-link href="https://www.lishiyuan.cn/" target="_blank">lishiyuan</a-typography-link> {{new Date().getFullYear()}}. </footer>
 

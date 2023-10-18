@@ -185,10 +185,10 @@ def season(mid,seasonId,fileName):
                     data = f
 
             all_archives.append({
-                "countryName":data['countryName'] if data != None else ['#'],
-                "leader":data['leader'] if data != None else ['#'],
-                "personName":data['personName'] if data != None else ['#'],
-                "organizationName":data['organizationName'] if data != None else ['#'],
+                "countryName":data['countryName'] if data != None and 'countryName' in data else ['#'],
+                "leader":data['leader'] if data != None and 'leader' in data else ['#'],
+                "personName":data['personName'] if data != None and 'personName' in data else ['#'],
+                "organizationName":data['organizationName'] if data != None and 'organizationName' in data else ['#'],
                 "name": item['title'],
                 "bvid": item['bvid'],
                 "aid": item['aid'],

@@ -24,10 +24,11 @@ def new_vedio_list(mid,pageNum,pageSize):
 def upinfo(mid):
     url = 'https://api.bilibili.com/x/space/wbi/acc/info'
     headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.69'
+        'cookie':'buvid3=C1571E59-20C1-B15C-9FBD-41C0001894EB67936infoc;' ,
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36 Edg/116.0.1938.69',
     }
     params = {
-        "mid":mid
+        "mid":mid,
     }
     json = requests.get(url,params=params,headers=headers).json()
     return json['data']
